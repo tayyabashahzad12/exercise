@@ -5,5 +5,8 @@
    background-color:plum;
    border-color: plum;
    border-radius: 10px;
-   
+}
+
+.input{
+    height: 40px;
 }
