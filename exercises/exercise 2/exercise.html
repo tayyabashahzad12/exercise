@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BMI CALCULATOR</h1>
+    <form onsubmit="calculateBMI(); return false">
+        <label for="heightInputFeet">
+            Your height:
+        </label>
+        <input required id="heightInputFeet" type="number" min="0" max="10" placeholder="feet">
+        <input required id="heightInputInch" type="number" min="0" max="11" placeholder="inch">
+        <br>
+        <label for="heightInput">
+            Your Weight:
+        </label>
+        <input required id="weightInputKg" type="number" min="0" max="10" placeholder="85kg">
+        <button type="submit">Calculate</button>
+    </form>
+
+    <script>
+        function calculateBMI() {
+          let heightInputFeet = document.getElementById("heightInputFeet").value;
+          let heightInputInch = document.querySelector("#heightInputInch").value;
+          let weightInputKg = document.querySelector("#WeightInputkg").value;
+
+          heightInputFeet = parseInt(heightInputFeet);
+          heightInputInch = parseInt(heightInputInch);
+
+          heightInputInch += heightInputFeet*12;
+          let heightInCm = heightInputInch* 2.54;
+
+        }
+    </script>
+</body>
+</html>
