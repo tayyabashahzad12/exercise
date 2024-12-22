@@ -9,17 +9,22 @@
     <h1>BMI CALCULATOR</h1>
     <form onsubmit="calculateBMI(); return false">
         <label for="heightInputFeet">
-            Your height:
+            Your Height:
         </label>
         <input required id="heightInputFeet" type="number" min="0" max="10" placeholder="feet">
         <input required id="heightInputInch" type="number" min="0" max="11" placeholder="inch">
         <br>
-        <label for="heightInput">
+        <label for="weightInputKg">
             Your Weight:
         </label>
-        <input required id="weightInputKg" type="number" min="0" max="10" placeholder="85kg">
+        <input required step="0.1" id="weightInputKg" type="number" min="0" max="200" placeholder="85kg">
         <button type="submit">Calculate</button>
     </form>
+
+    <div id="result">
+        <h2 id="title"></h2>
+        <p id="suggestion"></p>
+    </div>
 
     <script>
         function calculateBMI() {
@@ -30,8 +35,38 @@
           heightInputFeet = parseInt(heightInputFeet);
           heightInputInch = parseInt(heightInputInch);
 
-          heightInputInch += heightInputFeet*12;
-          let heightInCm = heightInputInch* 2.54;
+          heightInputInch += heightInputFeet * 12;
+          let heightInMeter = (heightInputInch * 2.54)/100 ;
+         let heightInMeterSq = heightInMeter * heightInMeter;
+         let bodyMassIndex = weightInputKg / heightInMeterSq;
+         let idealWeight = 22 * heightInMeterSq;
+         let weightToLose =(weightInputKg-idealWeight).toFixed(2);
+         let weightToGain = (idealWeight- weightInputKg).toFixed(2);
+
+         let title = " you are";
+         if (bodyMassIndex > 30) {
+            title += `obese. you need to lose ${weightToLose}kg `;
+         } else if (bodyMassIndex > 25) {
+              title += `Overweight. you need to lose ${weightToLose}kg`;
+         }else if (bodyMassIndex > 18.5) {
+             if (bodyMassIndex > 22) {
+                title += `Normal but optionally you may lose ${weightToLose} indexes to become ideally fit`;   
+            }else if(parseInt(bodyMassIndex) === 22){
+             title += `perfectly fit` 
+            } else {
+                title += `Normal but optionally you may gain ${weightToGain} indexes to become ideally fit`;
+            }
+         }
+         else {
+            title += `Underweight  you supposed to gain ${weightToGain}kg to became normal`;
+         }
+
+        console.log("index:", bodyMassIndex);
+        console.log("title:", title);
+        console.log("idealWeight:",idealWeight);
+
+        document.querySelector("#title").innerHTML = `Ideal Weight: ${(idealWeight).toFixed(2)}kg`;
+        document.querySelector("#title").innerHTML = idealWeight;
 
         }
     </script>
