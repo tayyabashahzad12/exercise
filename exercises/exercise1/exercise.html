@@ -7,10 +7,25 @@
     <link rel="stylesheet" href="exercise.css">
 </head>
 <body>
-    <Center>
-    <h1>TABLE GENERATOR</h1>
-    <button class="button" onclick="alertFunction()">Click Me</button>
-    <script src="script.mjs"></script>
-</Center>
+
+    <h1 class="h1">Multiplication Table Generator</h1>
+<form onsubmit="generateTable(); return false">
+    <label class="label" for="numberInput">
+        Enter a Number:
+    </label>
+    <input class="one" required id="numberInput" type="number" min="1" placeholder="Enter a number">
+    <label class="input" for="rangeInput">
+        Enter Range:
+    </label>
+    <input required id="rangeInput" type="number" min="1" placeholder="Enter range">
+    <button class="button" type="submit">Generate Table</button>
+</form>
+
+<div class="div" id="result">
+    <h2 id="title"></h2>
+    <ul id="tableList"></ul>
+</div>
+
+<script src="script.mjs"></script>
 </body>
 </html>
