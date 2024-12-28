@@ -19,24 +19,17 @@
 // }
 
 function generateTable() {
-    const numberInput = document.getElementById("numberInput").value;
-    const rangeInput = document.getElementById("rangeInput").value;
-    const tableList = document.getElementById("tableList");
+    let numberInput = document.querySelector("#numberInput").value;
+    let rangeInput = document.querySelector("#rangeInput").value;
 
     const num = parseInt(numberInput);
     const range = parseInt(rangeInput);
-
-    if (num <= 0 || range <= 0) {
-        alert("Please enter positive numbers!");
-        return;
-    }
-
 
     let tableContent = "";
     for (let i = 1; i <= range; i++) {
         tableContent += `${num} x ${i} = ${num * i}<br>`;
     }
 
-    tableList.innerHTML = tableContent; 
-    document.getElementById("title").textContent ;
+    document.querySelector("#tableList").innerHTML = tableContent;
+    document.querySelector("#title").textContent = `Multiplication Table of ${num}`;
 }
